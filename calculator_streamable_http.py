@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from mcp.server.fastmcp import FastMCP
 from pydantic import BaseModel, Field
+import uvicorn
 
 mcp = FastMCP("calculator_streamable_http")
 
@@ -24,7 +25,8 @@ async def add_numbers(params: AddInput) -> str:
     return f"The sum of {params.a} and {params.b} is: {result}"
 
 def main():
-    mcp.run(transport="streamable_http", port=8001)
+    app = mcp.streamable_http_app()
+    uvicorn.run(app, host="0.0.0.0", port=8001)
 
 if __name__ == "__main__":
     main()
