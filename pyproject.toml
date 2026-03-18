@@ -1,0 +1,15 @@
+[project]
+name = "mcp-server-calculator-streamable-http"
+version = "0.1.0"
+description = "MCP Calculator Server with StreamableHTTP transport"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp[server]>=1.0.0",
+]
+
+[project.scripts]
+mcp-server-calculator-streamable-http = "calculator_streamable_http:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
